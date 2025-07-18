@@ -51,7 +51,7 @@ loader.load(
     scene.add(gltf.scene);
 
     gltf.scene.position.y = -2; 
-    gltf.scene.scale.set(2, 2, 2); 
+    gltf.scene.scale.set(1.2, 1.2, 1.2); // instead of (2, 2, 2)
     gltf.scene.traverse((child) => {
       if (child.isMesh) {
         console.log('Mesh name:', child.name);
@@ -100,12 +100,26 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Dropdown color change
   document.getElementById('fridgeColorSelect').addEventListener('change', (e) => {
-    const color = Number(e.target.value);
-    scene.traverse((child) => {
-      if (child.isMesh && fridgeBodyNames.includes(child.name)) {
-        child.material.color.set(color);
-      }
-    });
+    const value = e.target.value;
+    if (value === "original") {
+      // Restore original colors
+      scene.traverse((child) => {
+        if (child.isMesh && fridgeBodyNames.includes(child.name)) {
+          // Find the index of the mesh in fridgeBodyMeshes
+          const idx = fridgeBodyMeshes.findIndex(mesh => mesh.name === child.name);
+          if (idx !== -1) {
+            child.material.color.copy(originalBodyColors[idx]);
+          }
+        }
+      });
+    } else {
+      const color = Number(value);
+      scene.traverse((child) => {
+        if (child.isMesh && fridgeBodyNames.includes(child.name)) {
+          child.material.color.set(color);
+        }
+      });
+    }
   });
 
   document.getElementById('openBottomDoorBtn').addEventListener('click', () => {
@@ -137,8 +151,8 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
-camera.position.set(0, 2, 8);
-camera.lookAt(0, 0, 0); 
+camera.position.set(0, 2, 15); // or even 20 if needed
+camera.lookAt(0, 0, 0);
 
 function animate() {
   requestAnimationFrame(animate);
