@@ -8,10 +8,15 @@
     <link rel="stylesheet" href="/index.css" />
   </head>
   <body>
-    <button id="changeFridgeColorBtn" class="fridge-btn">Red Fridge</button>
-    <button id="changeFridgeColorGreenBtn" class="fridge-btn">Green Fridge</button>
-    <button id="changeFridgeColorBlueBtn" class="fridge-btn">Blue Fridge</button>
-    <button id="changeFridgeColorYellowBtn" class="fridge-btn">Yellow Fridge</button>
+    <select id="fridgeColorSelect" class="fridge-btn" style="width: 180px;">
+      <option value="" disabled selected>Color</option>
+      <option value="0xff0000">Red</option>
+      <option value="0x00ff00">Green</option>
+      <option value="0x0000ff">Blue</option>
+      <option value="0xffff00">Yellow</option>
+      <option value="0xffffff">White</option>
+      <option value="0x87ceeb">Sky Blue</option>
+    </select>
     <button id="openBottomDoorBtn" class="fridge-btn">Open Bottom Door</button>
     <button id="openTopDoorBtn" class="fridge-btn">Open Top Door</button>
     <button id="stopAnimBtn" class="fridge-btn">Stop Animation</button>

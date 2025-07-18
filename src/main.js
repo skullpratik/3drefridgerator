@@ -98,34 +98,12 @@ window.addEventListener('DOMContentLoaded', () => {
     'Fridge_TopDoor_Shell_0'
   ];
 
-  document.getElementById('changeFridgeColorBtn').addEventListener('click', () => {
+  // Dropdown color change
+  document.getElementById('fridgeColorSelect').addEventListener('change', (e) => {
+    const color = Number(e.target.value);
     scene.traverse((child) => {
       if (child.isMesh && fridgeBodyNames.includes(child.name)) {
-        child.material.color.set(0xff0000); 
-      }
-    });
-  });
-
-  document.getElementById('changeFridgeColorGreenBtn').addEventListener('click', () => {
-    scene.traverse((child) => {
-      if (child.isMesh && fridgeBodyNames.includes(child.name)) {
-        child.material.color.set(0x00ff00);
-      }
-    });
-  });
-
-  document.getElementById('changeFridgeColorBlueBtn').addEventListener('click', () => {
-    scene.traverse((child) => {
-      if (child.isMesh && fridgeBodyNames.includes(child.name)) {
-        child.material.color.set(0x0000ff); // Blue
-      }
-    });
-  });
-
-  document.getElementById('changeFridgeColorYellowBtn').addEventListener('click', () => {
-    scene.traverse((child) => {
-      if (child.isMesh && fridgeBodyNames.includes(child.name)) {
-        child.material.color.set(0xffff00); // Yellow
+        child.material.color.set(color);
       }
     });
   });

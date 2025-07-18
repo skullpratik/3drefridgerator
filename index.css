@@ -1,7 +1,7 @@
 .fridge-btn {
   position: absolute;
   left: 20px;
-  width: 170px;
+  width: 180px;
   padding: 12px 0;
   font-size: 17px;
   font-weight: 600;
@@ -15,19 +15,39 @@
   box-shadow: 0 4px 16px rgba(0,0,0,0.12), 0 1.5px 4px rgba(0,0,0,0.10);
   letter-spacing: 0.5px;
   transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  outline: none;
 }
-.fridge-btn:hover {
+
+.fridge-btn:hover, .fridge-btn:focus {
   background: linear-gradient(90deg, #235390 0%, #4f8cff 100%);
   transform: translateY(-2px) scale(1.04);
   box-shadow: 0 8px 24px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.13);
 }
+
+#fridgeColorSelect.fridge-btn {
+  padding: 12px 10px;
+  background: linear-gradient(90deg, #4f8cff 0%, #235390 100%);
+  color: #fff;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  outline: none;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#fridgeColorSelect.fridge-btn:focus {
+  border: 2px solid #235390;
+  color: #235390;
+}
+
 #changeFridgeColorBtn { top: 20px; }
-#changeFridgeColorGreenBtn { top: 60px; }
-#changeFridgeColorBlueBtn { top: 100px; }
-#changeFridgeColorYellowBtn { top: 140px; }
-#openBottomDoorBtn { top: 180px; }
-#openTopDoorBtn { top: 220px; }
-#stopAnimBtn { top: 260px; }
+#fridgeColorSelect { top: 20px; }
+#openBottomDoorBtn { top: 60px; }
+#openTopDoorBtn { top: 100px; }
+#stopAnimBtn { top: 140px; }
 
 body {
   font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
